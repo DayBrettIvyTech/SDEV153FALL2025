@@ -24,7 +24,7 @@ Write **3-5 user stories** following the format:
 **Actual_Example(s)_For_My_Website**
 - As a friend of Brett's, I'd like to see his favorite ~150 albums on a clean website. 
 - As a fellow student in **[SDEV_153]**, I'd like to see a fellow classmate's website to see where I'm at. 
--As the professor for **[SDEV_153]**, I need to actually see my student's website in order to grade it. P.S., I'll be grading based on music taste. 
+- As the professor for **[SDEV_153]**, I need to actually see my student's website in order to grade it. P.S., I'll be grading based on music taste. 
 
 ---
 ## 3. Create Requirements Document. 
