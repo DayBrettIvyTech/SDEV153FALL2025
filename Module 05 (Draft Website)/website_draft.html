@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Album Cover Wall</title>
+  <title>Approximately 100 of my favorite albums of all time.</title>
   <style>
-    /* super basic css because it's week 5 */
     :root { --gap: 14px; --bg: #f7f7f7; --ink: #222; --card: #fff; }
     * { box-sizing: border-box; }
     body {
@@ -65,12 +64,10 @@
 </head>
 <body>
   <header>
-    <h1>Album Cover Wall</h1>
-    <p class="small">(Assignment draft) Just a bunch of covers in a grid. I can add more later.</p>
+    <h1>Approximately 100 of my favorite albums of all time.</h1>
+    <p class="small">This is a rough draft of the website. The final draft will have more pages and more albums.</p>
     <div class="toolbar">
       <button id="toggleTheme">Toggle Dark Mode</button>
-      <button id="biggerGaps">Bigger Gaps</button>
-      <button id="smallerGaps">Smaller Gaps</button>
     </div>
   </header>
 
@@ -83,38 +80,37 @@
       <figure>
         <img class="cover" src="Cover Artwork/Cichlisuite.jpg" alt="Album 1 cover art" />
         <figcaption>
-          <span class="title">Chichlisuite</span>
-          <span class="artist">Some Artist</span>
+          <span class="title">Cichlisuite - EP 1/2</span>
+          <span class="artist">Autechre</span>
         </figcaption>
       </figure>
 
-      <!-- Add at least 50 of these  -->
+      <figure>
+        <img class="cover" src="Cover Artwork/Syro.jpg" alt="Album 1 cover art" />
+        <figcaption>
+          <span class="title">Syro</span>
+          <span class="artist">Aphex Twin</span>
+        </figcaption>
+      </figure>
+
+       <figure>
+        <img class="cover" src="Cover Artwork/xxxx.jpg" alt="Album 1 cover art" />
+        <figcaption>
+          <span class="title">Album Title Here</span>
+          <span class="artist">Artist Name Here</span>
+        </figcaption>
+      </figure>
+
+      <!-- ^^^^^^^^ Add at least 100 of these ^^^^^^^^^^^^^^^^^^^^ -->
     </section>
   </main>
 
   <script>
     // Tiny JS to make it feel alive (and to show I can write a little JS)
     const toggleBtn = document.getElementById('toggleTheme');
-    const biggerBtn = document.getElementById('biggerGaps');
-    const smallerBtn = document.getElementById('smallerGaps');
 
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark');
-      // NOTE: not saving this in localStorage yet (haven't learned that or maybe I forgot)
-    });
-
-    biggerBtn.addEventListener('click', () => {
-      const root = document.documentElement;
-      const current = getComputedStyle(root).getPropertyValue('--gap').trim();
-      const n = parseInt(current, 10) + 4; // arbitrary math but it works
-      root.style.setProperty('--gap', n + 'px');
-    });
-
-    smallerBtn.addEventListener('click', () => {
-      const root = document.documentElement;
-      const current = getComputedStyle(root).getPropertyValue('--gap').trim();
-      const n = Math.max(4, parseInt(current, 10) - 4);
-      root.style.setProperty('--gap', n + 'px');
     });
 
     // If an image fails to load (because we don't have the files yet), show a checkerboard so it still looks intentional
