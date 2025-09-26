@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Album Cover Wall</title>
+  <style>
+    /* super basic css because it's week 5 */
+    :root { --gap: 14px; --bg: #f7f7f7; --ink: #222; --card: #fff; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 0; font-family: system-ui, Arial, sans-serif;
+      background: var(--bg); color: var(--ink);
+    }
+    header {
+      padding: 18px 14px; position: sticky; top: 0; z-index: 2;
+      background: linear-gradient(#ffffffcc, #ffffffcc), url(''); /* no bg img yet */
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e6e6e6;
+    }
+    h1 { margin: 0; font-size: 22px; }
+    p.small { margin: 6px 0 0; font-size: 14px; opacity: .75; }
+
+    .toolbar {
+      margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    button { cursor: pointer; border: 1px solid #ddd; background: #fff; padding: 8px 10px; border-radius: 8px; }
+
+    main { padding: 18px 14px 60px; }
+
+    /* grid that hopefully looks ok */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: var(--gap);
+    }
+
+    figure {
+      margin: 0; background: var(--card); border: 1px solid #ececec; border-radius: 10px;
+      overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    figure:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+    .cover {
+      display: block; width: 100%; aspect-ratio: 1/1; object-fit: cover; background: #ddd;
+    }
+    figcaption {
+      padding: 8px 10px 10px; font-size: 14px; line-height: 1.3;
+    }
+    .title { font-weight: 600; display: block; }
+    .artist { opacity: .7; }
+
+    /* dark mode that sorta works */
+    .dark { --bg: #0f1115; --ink: #e9eaee; --card: #171a21; }
+    .dark header { border-color: #222; background: linear-gradient(#111a, #111a); }
+    .dark button { background: #0f1115; color: #e9eaee; border-color: #222; }
+    .dark figure { border-color: #20242e; box-shadow: none; }
+
+    /* phone tweaks */
+    @media (max-width: 480px) {
+      h1 { font-size: 18px; }
+      .grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Album Cover Wall</h1>
+    <p class="small">(Assignment draft) Just a bunch of covers in a grid. I can add more later.</p>
+    <div class="toolbar">
+      <button id="toggleTheme">Toggle Dark Mode</button>
+      <button id="biggerGaps">Bigger Gaps</button>
+      <button id="smallerGaps">Smaller Gaps</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="grid" id="albumGrid">
+      <!-- NOTE: Photos are in "Cover Artwork", next to the html file for this website.  -->
+     
+
+      <!-- Example item (duplicate these and swap the src + text). Using placeholder files for now. -->
+      <figure>
+        <img class="cover" src="Cover Artwork/Cichlisuite.jpg" alt="Album 1 cover art" />
+        <figcaption>
+          <span class="title">Chichlisuite</span>
+          <span class="artist">Some Artist</span>
+        </figcaption>
+      </figure>
+
+      <!-- Add at least 50 of these  -->
+    </section>
+  </main>
+
+  <script>
+    // Tiny JS to make it feel alive (and to show I can write a little JS)
+    const toggleBtn = document.getElementById('toggleTheme');
+    const biggerBtn = document.getElementById('biggerGaps');
+    const smallerBtn = document.getElementById('smallerGaps');
+
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      // NOTE: not saving this in localStorage yet (haven't learned that or maybe I forgot)
+    });
+
+    biggerBtn.addEventListener('click', () => {
+      const root = document.documentElement;
+      const current = getComputedStyle(root).getPropertyValue('--gap').trim();
+      const n = parseInt(current, 10) + 4; // arbitrary math but it works
+      root.style.setProperty('--gap', n + 'px');
+    });
+
+    smallerBtn.addEventListener('click', () => {
+      const root = document.documentElement;
+      const current = getComputedStyle(root).getPropertyValue('--gap').trim();
+      const n = Math.max(4, parseInt(current, 10) - 4);
+      root.style.setProperty('--gap', n + 'px');
+    });
+
+    // If an image fails to load (because we don't have the files yet), show a checkerboard so it still looks intentional
+    document.querySelectorAll('img.cover').forEach(img => {
+      img.addEventListener('error', () => {
+        img.style.background = 'repeating-conic-gradient(#bbb 0% 25%, #ddd 0% 50%) 50%/20px 20px';
+      });
+    });
+  </script>
+</body>
+</html>
