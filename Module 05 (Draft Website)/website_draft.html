@@ -252,14 +252,14 @@
   </main>
 
   <script>
-    // Tiny JS to make it feel alive (and to show I can write a little JS)
+    // The token JavaScript bit
     const toggleBtn = document.getElementById('toggleTheme');
 
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark');
     });
 
-    // If an image fails to load (because we don't have the files yet), show a checkerboard so it still looks intentional
+    // Loads a checkerboard if the artwork doesn't transfer
     document.querySelectorAll('img.cover').forEach(img => {
       img.addEventListener('error', () => {
         img.style.background = 'repeating-conic-gradient(#bbb 0% 25%, #ddd 0% 50%) 50%/20px 20px';
