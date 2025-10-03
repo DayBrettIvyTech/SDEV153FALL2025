@@ -1,43 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Problematic Artist Disclaimer</title>
+
   <style>
+    /* Theme tokens */
+    :root {
+      --bg: #f7f7f7;
+      --ink: #222;
+      --card: #fff;
+      --border: #e6e6e6;
+    }
+    .dark {
+      --bg: #0f1115;
+      --ink: #e9eaee;
+      --card: #171a21;
+      --border: #20242e;
+    }
+
+    * { box-sizing: border-box; }
     body {
+      margin: 0;
       font-family: system-ui, Arial, sans-serif;
-      background: #f7f7f7;
-      color: #222;
-      padding: 40px;
-      max-width: 700px;
-      margin: auto;
+      background: var(--bg);
+      color: var(--ink);
       line-height: 1.6;
     }
-    h1 { font-size: 24px; }
-    a { display: inline-block; margin-top: 20px; color: #0066cc; }
-    button {
-  margin-top: 20px;
-  cursor: pointer;
-  border: 1px solid #ddd;
-  background: #fff;
-  padding: 10px 14px;
-  border-radius: 8px;
-  font-size: 14px;
-}
-button:hover {
-  background: #f0f0f0;
-}
 
+    /* Simple header/toolbar to match your index vibe */
+    header {
+      position: sticky; top: 0; z-index: 2;
+      padding: 18px 14px;
+      background: linear-gradient(#ffffffcc, #ffffffcc);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .dark header { background: linear-gradient(#111a, #111a); }
+
+    .toolbar {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    button {
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--ink);
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    button:hover { filter: brightness(1.05); }
+
+    main {
+      padding: 32px 14px 40px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    h1 { margin: 0 0 6px; font-size: 24px; }
+    h3 { margin-top: 28px; }
+
+    /* Space the bottom back button from content */
+    .footer-actions { margin-top: 28px; }
   </style>
 </head>
 <body>
-  <h1>Problematic Artist Disclaimer</h1>
-  <p>
-    Some of the artists featured on this website have serious personal controversies or troubling histories.
-    By including their work here, I am not endorsing the personal conduct of the artist, 
-    I'm simply acknowledging their musical contributions.
-  </p>
-  <button onclick="window.location.href='index.html'">← Back to Albums</button>
+  <header>
+    <h1>Problematic Artist Disclaimer</h1>
+    <div class="toolbar">
+      <button id="toggleTheme">Toggle Dark Mode</button>
+      <button onclick="window.location.href='index.html'">← Back to Albums</button>
+    </div>
+  </header>
+
+  <main>
+    <p>
+      Some of the artists featured on this website have serious personal controversies or troubling histories.
+      By including their work here, I am not endorsing the personal conduct of the artist, I’m simply acknowledging their musical contributions weighed against my own personal politics and convictions. 
+
+    <h3>Kanye West (a.k.a. “Ye”)</h3>
+    <p>
+      In 2022, Kanye West appeared on Alex Jones’s show and expressed praise for Adolf Hitler, among other statements. In the days after the interview,
+      there was no shortage of vitriolic hate speech from West. His subsequent album (<em>Vultures</em>) was promoted with a logo that bore
+      a striking resemblance to the <em>Reichsadler</em> (an eagle emblem clutching a swastika, used in Nazi Germany). To be clear: I stand with the Jewish community and do not condone hate speech of any kind.
+    </p>
+    <p>
+      The album I list here is West’s 2013 release Yeezus, an poignant commentary on modern America. It touches on for-profit prisons,
+      overconsumption of luxury goods, and the emptiness and decadence of public life. It’s also masterfully produced (Rick Rubin, Justin Vernon, Daft Punk, among others).
+      <em>Yeezus</em> remains a landmark work despite the creator’s later statements. The artist who made Yeezus is not the same person who later went on Alex Jones’s show. Kanye West is the walking embodiment of: "TAKE THE MEDS THE DOCTOR GAVE YOU!!!!"
+    </p>
+
+    <h3>Burzum (Varg Vikernes)</h3>
+    <p>Varg Vikernes is a convicted murderer, arsonist, and an avowed white supremacist. In terms of 'worst people alive today', Varg Vikernes is at the top of the running.</p>
+    <p>I struggle to separate art from artist, especially when the artist is particularily awful. I of course do not share any of the polical views of Varg Vikernes, and I think the man should be in prison.</p>
+
+    <h3>Ariel Pink</h3>
+    <p>Ariel Pink, compared to the aforementioned artists, is far less problematic, but still problematic enough to warrant a mention on this list.</p>
+    <p>Ariel Pink attended the January 6th protests in Washington D.C. He was not one of the insurrectionists, but he was there regardless. After the fact, he went on Tucker Carlson's show to justify his attendance.</p>
+    <p>This is more of a "I don't share the man's politics, and I don't endorse violently interrupting democratic processes" disclaimer, rather than a, "This is an irredeemable human being" disclaimer, as is the case with Kanye West and Varg Vikernes.</p>
+    <!-- Bottom back button -->
+    <div class="footer-actions">
+      <button onclick="window.location.href='index.html'">← Back to Albums</button>
+    </div>
+  </main>
+
+  <script>
+    // Dark mode toggle (page-local)
+    const toggleBtn = document.getElementById('toggleTheme');
+    toggleBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+  </script>
 </body>
 </html>
